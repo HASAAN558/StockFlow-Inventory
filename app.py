@@ -851,9 +851,9 @@ def pdf_invoice(sid):
     buf.seek(0)
     return send_file(buf, mimetype="application/pdf",
         as_attachment=True, download_name=f"invoice_{inv_num}.pdf")
-
+# Replace the very bottom of your file with ONLY this:
 with app.app_context():
     init_db()
+
 if __name__ == "__main__":
-    init_db()
     app.run(debug=True, port=5050)
