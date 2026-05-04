@@ -857,4 +857,5 @@ with app.app_context():
     init_db()
 
 def handler(request, context):
-    return app
+    return app.run(host="0.0.0.0", port=5000)
+   
