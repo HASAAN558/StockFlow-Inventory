@@ -852,6 +852,7 @@ def pdf_invoice(sid):
     return send_file(buf, mimetype="application/pdf",
         as_attachment=True, download_name=f"invoice_{inv_num}.pdf")
 # Replace the very bottom of your file with ONLY this:
+# ONLY this at the very bottom
 with app.app_context():
     init_db()
 
