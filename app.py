@@ -23,7 +23,9 @@ from reportlab.graphics import renderPDF
 app = Flask(__name__)
 CORS(app)
 
-DB_PATH = os.path.join(os.path.dirname(__file__), "inventory.db")
+# DB_PATH = os.path.join(os.path.dirname(__file__), "inventory.db")
+basedir = os.path.abspath(os.path.dirname(__file__))
+DB_PATH = os.path.join(basedir, "inventory.db")
 
 # ─────────────────────────────────────────────
 # DATABASE SETUP
@@ -850,7 +852,8 @@ def pdf_invoice(sid):
     return send_file(buf, mimetype="application/pdf",
         as_attachment=True, download_name=f"invoice_{inv_num}.pdf")
 
-
+with app.app_context():
+    init_db()
 if __name__ == "__main__":
     init_db()
     app.run(debug=True, port=5050)
