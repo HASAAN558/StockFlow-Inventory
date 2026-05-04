@@ -856,5 +856,5 @@ def pdf_invoice(sid):
 with app.app_context():
     init_db()
 
-if __name__ == "__main__":
-    app.run(debug=True, port=5050)
+def handler(request, context):
+    return app
