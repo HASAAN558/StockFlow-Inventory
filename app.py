@@ -853,9 +853,11 @@ def pdf_invoice(sid):
         as_attachment=True, download_name=f"invoice_{inv_num}.pdf")
 # Replace the very bottom of your file with ONLY this:
 # ONLY this at the very bottom
+# Place this right before the if __name__ == "__main__": block
 with app.app_context():
     init_db()
 
-def handler(request, context):
-    return app.run(host="0.0.0.0", port=5000)
+if __name__ == "__main__":
+    # Use 0.0.0.0 to ensure the app is accessible within the Vercel container
+    app.run(host="0.0.0.0", port=5050, debug=True)
    
